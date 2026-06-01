@@ -9,6 +9,7 @@ from table import Table
 from ui import ConsoleUI
 
 
+
 class TexasHoldemGame:
     def __init__(self, players: list[Player], small_blind: int = 5, big_blind: int = 10) -> None:
         # TODO: Task 1 - check that there are at least 2 players, and if so, 
