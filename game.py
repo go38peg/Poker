@@ -34,7 +34,6 @@ class TexasHoldemGame:
         # standard sequence of actions (create new Deck, reset table, reset all players, deal two cards to each player, 
         # post blinds, deal (flop, turn, river), run betting rounds, and showdown)
         # NOTE: many of these actions are custom methods
-        def play_hand(self) -> None:
         deck = Deck()
 
         self.table.reset()
