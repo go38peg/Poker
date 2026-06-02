@@ -94,8 +94,3 @@ class Deck:
 
     def reset(self) -> None:
         shuffle(self._cards) # remaining 50 cards are shuffled again
-
-deck = Deck()
-hand = deck.draw(2)
-print(hand)
-print(len(deck._cards))  # expected: 50
