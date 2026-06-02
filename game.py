@@ -27,7 +27,6 @@ class TexasHoldemGame:
         self.ui = ConsoleUI()
 
         pass
-                # initialize the game state with the players, blinds, table, hand evaluator, and UI
 
 
     def play_hand(self) -> None:
@@ -35,6 +34,34 @@ class TexasHoldemGame:
         # standard sequence of actions (create new Deck, reset table, reset all players, deal two cards to each player, 
         # post blinds, deal (flop, turn, river), run betting rounds, and showdown)
         # NOTE: many of these actions are custom methods
+        def play_hand(self) -> None:
+        deck = Deck()
+
+        self.table.reset()
+
+        for player in self.players:
+            player.reset_for_hand()
+
+        # Deal two hole cards
+        for player in self.players:
+            player.receive(deck.draw(2))
+
+        self._show_human_cards()
+
+        self._post_blinds()
+
+        self._betting_round("Pre-Flop")
+
+        self._deal_community(deck, 3, "Flop")
+        self._betting_round("Flop")
+
+        self._deal_community(deck, 1, "Turn")
+        self._betting_round("Turn")
+
+        self._deal_community(deck, 1, "River")
+        self._betting_round("River")
+
+        self._showdown()
         pass
 
     def _post_blinds(self) -> None:
