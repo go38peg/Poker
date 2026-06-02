@@ -48,9 +48,7 @@ class Player:
     @property
     def active(self) -> bool:
         # TODO: Task 5 - return True if the player is still active in the hand
-        if self.folded == False and self.chips > 0:
-            return True
-        pass
+        return not self.folded and self.chips > 0
 
     def all_in(self) -> None:
         wager = self.chips

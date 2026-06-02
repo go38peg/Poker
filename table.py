@@ -12,7 +12,7 @@ field(default_factory=list)
 @dataclass
 # TODO: Task 1 - implement the Table class 
 class Table:
-    community_cards = []
+    community_cards: list[Card] = field(default_factory=list)
     pot: int = 0
 
     def reset(self) -> None:

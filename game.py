@@ -7,13 +7,25 @@ from evaluator import HandEvaluator
 from player import Player
 from table import Table
 from ui import ConsoleUI
-
+# The assignment said that leading dots infront of import source are supposed to indicate that all imports come from the same package, 
+# but the dots were not included in the template on github.
 
 
 class TexasHoldemGame:
     def __init__(self, players: list[Player], small_blind: int = 5, big_blind: int = 10) -> None:
         # TODO: Task 1 - check that there are at least 2 players, and if so, 
         # initialize the game state with the players, blinds, table, hand evaluator, and UI
+        if len(players) < 2:
+            raise ValueError("At least 2 players are required")
+        
+        self.player = players
+        self.small_blind = small_blind
+        self.big_blind = big_blind
+
+        self.table = Table()
+        self.evaluator = HandEvaluator()
+        self.ui = ConsoleUI()
+
         pass
                 # initialize the game state with the players, blinds, table, hand evaluator, and UI
 

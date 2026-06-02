@@ -85,12 +85,20 @@ class Deck:
     def draw(self, count: int = 1) -> list[Card]:
         if count < 1:
             raise ValueError("count must be at least 1")
-        if count > len(self._cards) - count:
+        if count > len(self._cards):
             raise ValueError("count must be at most number of remaining cards")
         return [self._cards.pop() for _ in range(count)]
 
     def remaining(self) -> int:
         return len(self._cards)
 
+    #def reset(self) -> None:
+    #    shuffle(self._cards) # remaining 50 cards are shuffled again (we are not sure about what is asked)
+
     def reset(self) -> None:
-        shuffle(self._cards) # remaining 50 cards are shuffled again
+        self._cards = [
+            Card(rank, suit)
+            for rank in Rank
+            for suit in Suit
+        ]
+        shuffle(self._cards) # if the whole deck should be reset to all 52 cards and shuffled again
