@@ -6,7 +6,7 @@ from collections import Counter
 from dataclasses import dataclass
 from enum import IntEnum
 from itertools import combinations
-from typing import Tuple  # Added this import for your Tuple type hint
+from typing import Tuple 
 
 from cards import Card
 
@@ -32,7 +32,6 @@ class HandRank:
     # TODO: Task 2 - return a version of the category
     def get_category(self) -> str:
         return self.category.name.replace("_", " ").title()
-
 
 class HandEvaluator:
     # TODO: Task 3 - implement the best_rank method to evaluate the best possible hand from a list of cards
