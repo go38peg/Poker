@@ -251,3 +251,6 @@ class TexasHoldemGame:
 
         # True if exactly one active player remains
         return len(active_players) == 1
+
+    def show_leaderboard(self) -> None:
+        self.ui_show_leaderboard(self.players)
