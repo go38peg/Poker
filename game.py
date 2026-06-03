@@ -1,3 +1,4 @@
+# game.py
 """Main Texas Hold'em game loop."""
 
 from __future__ import annotations
