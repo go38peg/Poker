@@ -1,6 +1,7 @@
 # cards.py
 """Card and deck primitives for Texas Hold'em."""
 
+
 from __future__ import annotations
 
 from dataclasses import dataclass
