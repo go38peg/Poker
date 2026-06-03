@@ -12,7 +12,7 @@ def main() -> None:
     ]
     game = TexasHoldemGame(players)
 
-    for _ in range(5):
+    for _ in range(2):
         game.play_hand()
 
     game.show_leaderboard()
@@ -20,4 +20,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
