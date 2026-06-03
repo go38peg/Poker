@@ -62,18 +62,21 @@ class TexasHoldemGame:
             return
 
         self._deal_community(deck, 3, "Flop") # Deals the flop
+        self.ui.show_message(f"Flop: {self.ui.format_cards(self.community_cards)}")
         self._betting_round("Flop") # Second betting round
         if self._only_one_player_left():
             self._showdown()
             return
 
         self._deal_community(deck, 1, "Turn") # Deals the turn
+        self.ui.show_message(f"Turn: {self.ui.format_cards(self.community_cards)}")
         self._betting_round("Turn") # Third betting round
         if self._only_one_player_left():
             self._showdown()
             return
 
         self._deal_community(deck, 1, "River") # Deals the river
+        self.ui.show_message(f"River: {self.ui.format_cards(self.community_cards)}")
         self._betting_round("River") # Fourth and final betting round
 
         self._showdown() # Determines the winner and awards the pot
