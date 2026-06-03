@@ -219,7 +219,7 @@ class TexasHoldemGame:
         share = self.table.pot // len(winners) #remainder is ignored for simplicity
 
         for winner in winners:
-            winner.chips += share
+            winner.record_win(share)
 
         # Displays results
         winner_names = ", ".join(
@@ -233,6 +233,12 @@ class TexasHoldemGame:
         self.ui.show_message(
             f"Winning hand: {best_rank.get_category()}"
         )
+
+        #records that every active player participated in the hand
+        for player in self.players:
+            player.record_hand_played()
+
+    
 
     def _only_one_player_left(self) -> bool:
         # TODO: Task 9 - return True if only one player is still active and False otherwise
