@@ -253,4 +253,4 @@ class TexasHoldemGame:
         return len(active_players) == 1
 
     def show_leaderboard(self) -> None:
-        self.ui_show_leaderboard(self.players)
+        self.ui.show_leaderboard(self.players)
