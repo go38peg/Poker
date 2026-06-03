@@ -82,22 +82,3 @@ class HandEvaluator:
             return 5
         else:
             return None
-
-
-        evaluator = HandEvaluator()
-
-        # Create a 7-card pool containing Four Aces (and a King kicker)
-        cards = [
-            Card(Rank.ACE, Suit.SPADES),
-            Card(Rank.ACE, Suit.HEARTS),
-            Card(Rank.ACE, Suit.CLUBS),
-            Card(Rank.ACE, Suit.DIAMONDS),
-            Card(Rank.KING, Suit.HEARTS),
-            Card(Rank.TWO, Suit.CLUBS),
-            Card(Rank.THREE, Suit.DIAMONDS)
-        ]
-
-        # Evaluate and print the best 5-card combination
-        best_hand = evaluator.best_rank(cards)
-        print(f"Hand Category: {best_hand.get_category()}")
-        print(f"Tiebreakers:   {best_hand.tiebreakers}")
