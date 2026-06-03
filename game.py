@@ -135,6 +135,10 @@ class TexasHoldemGame:
         # active player can choose to fold, call, or raise -> ensure that each action works
         # NOTE: this is a big task
 
+        action_remains = True
+        while action_remains:
+            action_remains = False
+            
         # Highest amount any player has committed this round
         current_bet = max(player.current_bet for player in self.players)
         
@@ -144,9 +148,15 @@ class TexasHoldemGame:
         
             # Amount needed to match the highest bet
             call_amount = current_bet - player.current_bet
+
+            if call_amount == 0 and player.current_bet > 0:
+                continue
         
             # Asks the player what they want to do
-            action = self.ui.ask_action(player, call_amount)
+            if player.is_human:
+                action = self.ui.ask_action(player, call_amount).strip().lower()
+            else:
+                action = self._bot_action(player, call_amount).strip().lower()
 
             # Fold
             if action == "fold":
@@ -163,16 +173,21 @@ class TexasHoldemGame:
 
             # Raise
             elif action == "raise":
-                raise_amount = self.ui.ask_raise_amount(
+                if player.is_human:
+                    raise_amount = self.ui.ask_raise_amount(
                     1, # min raise is 1 more than the current bet
                     player.chips # max raise is all the player's remaining chips
                 )
-
+                else:
+                    raise_amount = 5 # Defaults bot raise amount
+                    
                 wager = player.bet(call_amount + raise_amount)
                 self.table.add_to_pot(wager)
 
                 current_bet = player.current_bet
 
+                action_remains = True
+                
         # Round is over, resets bets
         for player in self.players:
             player.current_bet = 0
