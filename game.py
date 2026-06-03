@@ -54,12 +54,21 @@ class TexasHoldemGame:
 
         # First betting round (before any community cards are shown)
         self._betting_round("Pre-Flop")
+        if self._only_one_player_left():
+            self._showdown()
+            return
 
         self._deal_community(deck, 3, "Flop") # Deals the flop
         self._betting_round("Flop") # Second betting round
+        if self._only_one_player_left():
+            self._showdown()
+            return
 
         self._deal_community(deck, 1, "Turn") # Deals the turn
         self._betting_round("Turn") # Third betting round
+        if self._only_one_player_left():
+            self._showdown()
+            return
 
         self._deal_community(deck, 1, "River") # Deals the river
         self._betting_round("River") # Fourth and final betting round
@@ -141,6 +150,10 @@ class TexasHoldemGame:
             # Fold
             if action == "fold":
                 player.folded = True
+
+                # Stops the betting round if only one player remains after this fold
+                if self._only_one_player_left():
+                    return
 
             # Call or check
             elif action in ("call", "check"):
