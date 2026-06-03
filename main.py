@@ -11,7 +11,11 @@ def main() -> None:
         Player("Grace Bot", chips=1_000),
     ]
     game = TexasHoldemGame(players)
-    game.play_hand()
+
+    for _ in range(5):
+        game.play_hand()
+
+    game.show_leaderboard()
 
 
 if __name__ == "__main__":
