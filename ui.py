@@ -95,7 +95,7 @@ class ConsoleUI:
                 f"{player.name} | "
                 f"Wins: {player.hands_won} | "
                 f"Played: {player.hands_played} | "
-                f"Win Rate: {player.win_rate:.1f}% | " 
+                f"Win Rate: {player.win_rate:.2f}% | " 
                 f"Total Winnings: {player.total_winnings}" 
             )
             
