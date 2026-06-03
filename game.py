@@ -18,7 +18,7 @@ class TexasHoldemGame:
         if len(players) < 2:
             raise ValueError("At least 2 players are required")
         
-        self.player = players
+        self.players = players
         self.small_blind = small_blind
         self.big_blind = big_blind
 
