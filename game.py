@@ -174,7 +174,7 @@ class TexasHoldemGame:
             return "fold"
         
         # Otherwise, calls
-        return "Call"
+        return "call"
 
     def _showdown(self) -> None:
         # TODO: Task 8 - if only one player remains, they win the pot; 
@@ -216,7 +216,7 @@ class TexasHoldemGame:
         ]
 
          # Splits the pot among winners
-        share = self.table.pot // len(winners)
+        share = self.table.pot // len(winners) #remainder is ignored for simplicity
 
         for winner in winners:
             winner.chips += share
@@ -240,7 +240,7 @@ class TexasHoldemGame:
         # Finds all players who are still active
         active_players = [
             player for player in self.players
-            if player.active
+            if not player.folded
         ]
 
         # True if exactly one active player remains
