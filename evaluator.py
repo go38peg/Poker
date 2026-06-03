@@ -59,6 +59,19 @@ class HandEvaluator:
             return HandRank(HandCategory.STRAIGHT_FLUSH, (straight_high,))
         if groups[0][1] == 4:
             return HandRank(HandCategory.FOUR_OF_A_KIND, (groups[0][0], groups[1][0]))
+        if groups[0][1] == 3 and groups[1][1] == 2:
+            return HandRank(HandCategory.FULL_HOUSE, (groups[0][0], groups[1][0]))
+        if is_flush:
+            return HandRank(HandCategory.FLUSH, tuple(ranks))
+        if straight_high:
+            return HandRank(HandCategory.STRAIGHT, (straight_high,))
+        if groups[0][1] == 3:
+            return HandRank(HandCategory.THREE_OF_A_KIND, (groups[0][0], groups[1][0], groups[2][0]))
+        if groups[0][1] == 2 and groups[1][1] == 2:
+            return HandRank(HandCategory.TWO_PAIR, (groups[0][0], groups[1][0], groups[2][0]))
+        if groups[0][1] == 2:
+            return HandRank(HandCategory.ONE_PAIR, (groups[0][0], groups[1][0], groups[2][0], groups[3][0]))
+        return HandRank(HandCategory.HIGH_CARD, tuple(ranks))
 
     def _straight_high(self, ranks: list[int]) -> int | None:
         # TODO: Task 5 – implement the logic to determine if the hand contains a straight,
@@ -69,3 +82,22 @@ class HandEvaluator:
             return 5
         else:
             return None
+
+
+        evaluator = HandEvaluator()
+
+        # Create a 7-card pool containing Four Aces (and a King kicker)
+        cards = [
+            Card(Rank.ACE, Suit.SPADES),
+            Card(Rank.ACE, Suit.HEARTS),
+            Card(Rank.ACE, Suit.CLUBS),
+            Card(Rank.ACE, Suit.DIAMONDS),
+            Card(Rank.KING, Suit.HEARTS),
+            Card(Rank.TWO, Suit.CLUBS),
+            Card(Rank.THREE, Suit.DIAMONDS)
+        ]
+
+        # Evaluate and print the best 5-card combination
+        best_hand = evaluator.best_rank(cards)
+        print(f"Hand Category: {best_hand.get_category()}")
+        print(f"Tiebreakers:   {best_hand.tiebreakers}")
