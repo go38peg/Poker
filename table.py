@@ -7,8 +7,6 @@ from dataclasses import dataclass, field
 
 from cards import Card
 
-field(default_factory=list)
-
 @dataclass
 # TODO: Task 1 - implement the Table class 
 class Table:
