@@ -1,0 +1,13 @@
+""" Project done by Cai Nike Winkler (student ID: 03821119) and Sophie Luise Schill (03819230)
+
+
+Use of AI Assistance
+Artifical intelligence tools such as Chat GPT and Gemini were used during the development of this project in the following ways:
+- Debugging and troubleshooting: When we encountered bugs or unexpected behavior that we were unable to resolve indepentdenlt or easily with advice from our peers, 
+  we used AI assistance to help identitfy potential causes, suggest debugging strategies, and explain error messages. We then evaluated, tested and modified the 
+  proposed solutions ourselves before incorporating them into the project.
+- Implementation support: For the more complex components of the project, particulary evaluator.py and game.py, we used AI assistance to help design and implement parts 
+  of the code. The AI provided explanations, code suggestions, and example implementations that we adapted, tested, and again modified as needed to suit our needs and 
+  match our capabilities, and integrated that into our final solution.
+
+All general suggestions were reviewed, modified where necessary, and validated by the project team before being included in the repository."""
