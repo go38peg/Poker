@@ -139,7 +139,7 @@ class TexasHoldemGame:
         current_bet = max(player.current_bet for player in self.players)
         
         for player in self.players:
-            if player.folded:
+            if not player.active:
                 continue # Skips folded players
         
             # Amount needed to match the highest bet
