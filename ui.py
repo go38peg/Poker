@@ -78,3 +78,25 @@ class ConsoleUI:
         # TODO: Task 6 - convert a list of Card objects into a string representation
         pass
         return " ".join(str(card) for card in cards)
+
+    #feature: leaderboard system
+    def show_leaderboard(self, players: list[Player]) -> None:
+        print("\n===== LEADERBOARD =====")
+
+        ranked_players = sorted(
+            players,
+            key=lambda p: p.total_winnings,
+            reverse = True
+        )
+
+        for position, player in enumerate(ranked_players, start=1):
+            print(
+                f"{position}. "
+                f"{player.name} | "
+                f"Wins: {player.hands_won} | "
+                f"Played: {player.hands_played} | "
+                f"Win Rate: {player.win_rate:.1f}% | " 
+                f"Total Winnings: {player.total_winnings}" 
+            )
+            
+        print("=======================\n")
