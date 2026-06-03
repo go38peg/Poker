@@ -6,8 +6,6 @@ from dataclasses import dataclass, field
 
 from cards import Card
 
-field(default_factory=list)
-
 @dataclass
 class Player:
     name: str
@@ -40,8 +38,6 @@ class Player:
 
         self.chips -= wager
         self.current_bet += wager
-
-        pass
 
         return wager
 
