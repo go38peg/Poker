@@ -50,6 +50,8 @@ class TexasHoldemGame:
         for player in self.players:
             player.receive(deck.draw(2))
 
+        self._show_human_cards()
+        
         # The first two players pay the blinds, this creates the initial pot
         self._post_blinds()
 
